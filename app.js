@@ -24,10 +24,10 @@ db.once('open', function callback() {
 // CONFIG =============================================================
 // view engine setup
 
+require('./config/passport')(passport);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-require('./config/passport')(passport);
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(express.static(path.join(__dirname, 'public')));

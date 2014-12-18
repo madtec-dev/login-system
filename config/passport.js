@@ -21,7 +21,7 @@ module.exports = function(passport) {
   },
   function(req, email, password, done){
     process.nextTick(function(){
-    User.findOne({'local.mail' : email }, function(err, user) {
+    User.findOne({'local.email' : email }, function(err, user) {
       if(err) {
         return done(err);
       }
