@@ -6,7 +6,11 @@ module.exports = function(app, passport) {
   });
   // LOGIN ======================================
   app.get('/login', function(req, res) {
-    res.render('login', {message: req.flash('loginMessage') });
+    if(req.isAuthenticated()) {
+      res.redirect('/profile');
+    } else {
+      res.render('login', {message: req.flash('loginMessage') });
+    }
   });
   app.post('/login', passport.authenticate('local-login', {
     successRedirect: '/profile',
@@ -17,7 +21,11 @@ module.exports = function(app, passport) {
   
   // SIGNUP =======================================
   app.get('/signup', function(req, res) {
-    res.render('signup', {message: req.flash('signupMessage') });
+    if(req.isAuthenticated()) {
+      res.redirect('/profile');
+    } else {
+      res.render('signup', {message: req.flash('signupMessage') });
+    }
   });
 
   app.post('/signup', passport.authenticate('local-signup', {
@@ -28,12 +36,11 @@ module.exports = function(app, passport) {
   }));
   // PROFILE =======================================
   app.get('/profile', isLoggedIn, function(req, res) {
-    console.log(req.user);
     res.render('profile', {user : req.user})
   })
   // LOGOUT ========================
   app.get('/logout', function(req, res) {
-    req.logout;
+    req.logout();
     res.redirect('/');
   })
 

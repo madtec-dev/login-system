@@ -7,8 +7,7 @@ block content
         span.fa.fa-sign-in
         | Signup
       if(message.length > 0)
-        div.alert.alert-danger
-          {{message}}
+        div.alert.alert-danger #{message}
       form(action="/signup" method="post")
         div.form-group
           label Email

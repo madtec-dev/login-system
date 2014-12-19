@@ -7,7 +7,7 @@ block content
         span.fa.fa-sign-in
         | Login
       if(message.length > 0)
-        div.alet.alert-danger #{message}
+        div.alert.alert-danger #{message}
       form(action="/login" method="post")
         div.form-group
           label Email
