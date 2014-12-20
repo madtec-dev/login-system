@@ -48,6 +48,6 @@ module.exports = function(app, passport) {
     if(req.isAuthenticated()) {
       return next();
     }
-    res.redirect('/');
+    res.render('login', {message: 'You need to login'});
   }
 }
